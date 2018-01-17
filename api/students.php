@@ -2,7 +2,7 @@
 
 // Connect database
 
-	$connection=mysqli_connect('localhost','root','','api');
+	$connection=mysqli_connect('us-cdbr-iron-east-05.cleardb.net','b9958e7b728556','32477038','heroku_c7a583b05ad8df3');
 
 	$request_method=$_SERVER["REQUEST_METHOD"];
 	switch($request_method)
