@@ -4,7 +4,7 @@ $year=$_POST['year']; //from index.php
 $university=$_POST['university']; //from index.php
 
 $data="{\"name\":\"$name\",\"year\":\"$year\",\"university\":\"$university\"}";
-$url= 'http://localhost/intern/test/api.php/students';
+$url= 'https://warm-bastion-18306.herokuapp.com/api.php/students/';
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);

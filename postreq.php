@@ -1,6 +1,6 @@
 <?php
 $data="{\"name\":\"Danial\",\"year\":\"6\",\"university\":\"Uitm\"}";
-$url= 'http://localhost/intern/test/api.php/students';
+$url= 'https://warm-bastion-18306.herokuapp.com/api.php/students/';
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
