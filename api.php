@@ -5,7 +5,7 @@ $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 $input = json_decode(file_get_contents('php://input'),true);
 if (!$input) $input = array();
 // connect to the mysql database
-$link = mysqli_connect('us-cdbr-iron-east-05.cleardb.net', 'b9958e7b728556', '32477038', 'heroku_c7a583b05ad8df3');
+$link = mysqli_connect('localhost', 'root', '', 'api');
 mysqli_set_charset($link,'utf8');
 // retrieve the table and key from the path
 $table = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
@@ -44,7 +44,10 @@ if (!$result) {
 if ($method == 'GET') {
   if (!$key) echo '[';
   for ($i=0;$i<mysqli_num_rows($result);$i++) {
-    echo ($i>0?',':'').json_encode(mysqli_fetch_object($result));
+	  header('Content-Type: application/json');
+   $str=  ($i>0?',':'').json_encode(mysqli_fetch_object($result));
+	echo $str;
+	
   }
   if (!$key) echo ']';
 } elseif ($method == 'POST') {
@@ -53,4 +56,4 @@ if ($method == 'GET') {
   echo mysqli_affected_rows($link);
 }
 // close mysql connection
-mysqli_close($link);
+mysqli_close($link); ?>
